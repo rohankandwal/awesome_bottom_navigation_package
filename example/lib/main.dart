@@ -1,5 +1,7 @@
 import 'package:awesome_bottom_navigation/awesome_bottom_navigation.dart';
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(MyApp());
@@ -54,32 +56,54 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
   }
 
   List<Widget> _getHighlightedIcons() {
-    final List<Icon> _items = List<Icon>.empty(growable: true);
-    _items.add(Icon(Icons.home,));
-    _items.add(Icon(Icons.shopping_cart,));
-    _items.add(Icon(Icons.category,));
-    _items.add(Icon(Icons.account_circle,));
+    final List<Widget> _items = List<Widget>.empty(growable: true);
+    _items.add(
+      SvgPicture.asset(
+        ImageConstants.IC_BOTTOM_NAV_HOME,
+      ),
+    );
+    _items.add(
+      SvgPicture.asset(
+        ImageConstants.IC_BOTTOM_NAV_ZNOW,
+      ),
+    );
+    _items.add(
+      SvgPicture.asset(
+        ImageConstants.IC_BOTTOM_NAV_ZEXPLORE,
+      ),
+    );
+    _items.add(
+      SvgPicture.asset(
+        ImageConstants.IC_BOTTOM_NAV_LEDGER,
+      ),
+    );
     return _items;
   }
 
   List<Widget> _getMenuItems() {
     final List<Widget> items = List<Widget>.empty(growable: true);
-    items.add(_getMenu(Icons.home_outlined, "Home"));
-    items.add(_getMenu(Icons.shopping_cart_outlined, "Cart"));
-    items.add(_getMenu(Icons.category_outlined, "Help"));
-    items.add(_getMenu(Icons.account_circle_outlined, "Profile"));
+    items.add(
+      _getMenu(ImageConstants.IC_BOTTOM_NAV_HOME, "HOME"),
+    );
+    items.add(
+      _getMenu(ImageConstants.IC_BOTTOM_NAV_ZNOW, "ZNOW"),
+    );
+    items.add(
+      _getMenu(ImageConstants.IC_BOTTOM_NAV_ZEXPLORE, "ZEXPLORE"),
+    );
+    items.add(
+      _getMenu(ImageConstants.IC_BOTTOM_NAV_LEDGER, "LEDGER"),
+    );
     return items;
   }
 
-  Widget _getMenu(final IconData icon, final String text) {
+  Widget _getMenu(final String icon, final String text) {
     return Column(
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
-          icon,
-        ),
+        SvgPicture.asset(icon),
         Text(
           text,
           style: TextStyle(color: Colors.black),
